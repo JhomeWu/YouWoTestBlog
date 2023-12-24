@@ -2,9 +2,8 @@
 
 namespace App\Http\Requests\Posts;
 
-use DateTime;
-use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Post;
+use Illuminate\Foundation\Http\FormRequest;
 
 class PostSearchRequest extends FormRequest
 {

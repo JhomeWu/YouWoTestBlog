@@ -2,17 +2,20 @@
 
 namespace Tests\Feature\Api;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Post;
 use App\Models\User;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
+use Tests\TestCase;
 
 class PostTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_search_api(): void
+    /**
+     * @test
+     */
+    public function search_api(): void
     {
         Post::factory()->count(11)->create([
             'title' => 'test',
@@ -28,7 +31,7 @@ class PostTest extends TestCase
         ]);
         $response = $this->post('/api/posts/search', [
             'whereColumns' => [
-                ['title' , '=', 'test',]
+                ['title', '=', 'test'],
             ],
             'sortBy' => 'title',
             'order' => 'asc',
@@ -43,7 +46,7 @@ class PostTest extends TestCase
         $response->assertJsonPath('hasNext', true);
         $response = $this->post('/api/posts/search', [
             'whereColumns' => [
-                ['title' , '=', 'test',]
+                ['title', '=', 'test'],
             ],
             'sortBy' => 'title',
             'order' => 'asc',
@@ -54,7 +57,10 @@ class PostTest extends TestCase
         $response->assertJsonPath('hasNext', false);
     }
 
-    public function test_user_search_api(): void
+    /**
+     * @test
+     */
+    public function user_search_api(): void
     {
         $user = User::factory()->create();
         Sanctum::actingAs(
@@ -79,7 +85,7 @@ class PostTest extends TestCase
         ]);
         $searchParams = [
             'whereColumns' => [
-                ['title' , '=', 'test',]
+                ['title', '=', 'test'],
             ],
             'sortBy' => 'title',
             'order' => 'asc',
@@ -99,8 +105,10 @@ class PostTest extends TestCase
         $response->assertJsonPath('hasNext', false);
     }
 
-
-    public function test_store_api(): void
+    /**
+     * @test
+     */
+    public function store_api(): void
     {
         $user = User::factory()->create();
         Sanctum::actingAs(
@@ -119,7 +127,10 @@ class PostTest extends TestCase
         $response->assertJsonPath('user_id', $user->id);
     }
 
-    public function test_update_api(): void
+    /**
+     * @test
+     */
+    public function update_api(): void
     {
         $user = User::factory()->create();
         Sanctum::actingAs(
@@ -141,7 +152,10 @@ class PostTest extends TestCase
         $response->assertJsonPath('user_id', $user->id);
     }
 
-    public function test_destroy_api(): void
+    /**
+     * @test
+     */
+    public function destroy_api(): void
     {
         $user = User::factory()->create();
         Sanctum::actingAs(

@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,17 +16,17 @@ use App\Http\Controllers\UserController;
 */
 
 Route::prefix('user')->group(function () {
-    Route::post('/login', UserController::class . '@login');
+    Route::post('login', UserController::class . '@login');
     Route::prefix('posts')
         ->middleware('auth:sanctum')
         ->group(function () {
-            Route::post('/search', PostController::class . '@userSearch');
+            Route::post('search', PostController::class . '@userSearch');
             Route::post('/', PostController::class . '@store');
-            Route::put('/{post}', PostController::class . '@update');
-            Route::delete('/{post}', PostController::class . '@destroy');
+            Route::put('{post}', PostController::class . '@update');
+            Route::delete('{post}', PostController::class . '@destroy');
         });
 });
 
 Route::prefix('posts')->group(function () {
-    Route::post('/search', PostController::class . '@search');
+    Route::post('search', PostController::class . '@search');
 });

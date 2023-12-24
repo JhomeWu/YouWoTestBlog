@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Utils\SearchableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Utils\SearchableTrait;
 
 class Post extends Model
 {

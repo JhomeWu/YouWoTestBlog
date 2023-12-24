@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -18,6 +17,7 @@ class UserController extends Controller
         $user->tokens()->delete();
         // create new token
         $token = $request->user()->createToken('authToken')->plainTextToken;
+
         return response()->json([
             'name' => $user->name,
             'token' => $token,

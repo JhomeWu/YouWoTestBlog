@@ -2,8 +2,6 @@
 
 namespace App\Utils;
 
-use App\Utils\SearchData;
-
 trait SearchableTrait
 {
     public static function appendWhereQuery($query, SearchData $searchData)
@@ -11,15 +9,15 @@ trait SearchableTrait
         foreach ($searchData->whereColumns as $whereColumn) {
             if (count($whereColumn) > 0) {
                 [$column, $operator, $value] = $whereColumn;
-                if (!in_array($column, static::$searchableColumns)) {
+                if (! in_array($column, static::$searchableColumns)) {
                     continue;
                 }
                 if ($operator === 'in' && is_array($value)) {
                     $query->whereIn($column, $value);
                 } elseif ($operator === 'notin' && is_array($value)) {
                     $query->whereNotIn($column, $value);
-                } else if ($operator === 'like') {
-                    $fuzzySearch = implode("%", str_split($value));
+                } elseif ($operator === 'like') {
+                    $fuzzySearch = implode('%', str_split($value));
                     $query->where($column, 'like', $fuzzySearch);
                 } else {
                     $query->where($column, $operator, $value);
@@ -39,7 +37,8 @@ trait SearchableTrait
         $query->offset(($searchData->page - 1) * $pageSize);
 
         $data = $query->get();
-        return  [
+
+        return [
             'data' => $data->take($pageSize),
             'hasNext' => $data->count() > $pageSize,
         ];

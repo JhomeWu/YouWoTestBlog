@@ -2,33 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Posts\PostSearchRequest;
 use App\Models\Post;
 use App\Utils\SearchData;
-use App\Http\Requests\Posts\PostSearchRequest;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource for all visitors.
-     * Sort, Search, Ordering.
-     */
-    public function search(PostSearchRequest $request)
-    {
-        $searchData = new SearchData($request->validated());
-        return Post::search(Post::active(), $searchData);
-    }
-
-    /**
-     * Display a listing of the resource by user.
-     * Sort, Search, Ordering.
-     */
-    public function userSearch(PostSearchRequest $request)
-    {
-        $searchData = new SearchData($request->validated());
-        return Post::search(Post::where('user_id', $request->user()->id), $searchData);
-    }
-
     /**
      * Store a newly created resource in storage.
      * Create.
@@ -41,6 +21,7 @@ class PostController extends Controller
             'content' => $request->content,
             'is_active' => $request->is_active,
         ]);
+
         return response()->json($post);
     }
 
@@ -64,6 +45,7 @@ class PostController extends Controller
             'content' => $request->content ?? $post->content,
             'is_active' => $request->is_active ?? $post->is_active,
         ]);
+
         return response()->json($post);
     }
 
@@ -74,6 +56,29 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+
         return response()->json($post);
+    }
+
+    /**
+     * Display a listing of the resource for all visitors.
+     * Sort, Search, Ordering.
+     */
+    public function search(PostSearchRequest $request)
+    {
+        $searchData = new SearchData($request->validated());
+
+        return Post::search(Post::active(), $searchData);
+    }
+
+    /**
+     * Display a listing of the resource by user.
+     * Sort, Search, Ordering.
+     */
+    public function userSearch(PostSearchRequest $request)
+    {
+        $searchData = new SearchData($request->validated());
+
+        return Post::search(Post::where('user_id', $request->user()->id), $searchData);
     }
 }
