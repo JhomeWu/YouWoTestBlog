@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Utils\SearchData;
+use App\Http\Requests\Posts\PostSearchRequest;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,9 +12,10 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function search(PostSearchRequest $request)
     {
-        return Post::all();
+        $searchData = new SearchData($request->validated());
+        return Post::search(Post::active(), $searchData);
     }
 
     /**
