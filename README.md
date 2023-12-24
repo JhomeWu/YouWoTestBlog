@@ -7,59 +7,30 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Project of YouWo Company Test Project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The backend code, APIs and database structure for blog.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Change Log
 
-## Learning Laravel
+#### Style: Run linter
+[link to commit](https://github.com/JhomeWu/YouWoTestBlog/commit/48ac25779786d8cccbe3ba48a78eb0d88644ab92)
+#### Feat: Install lint
+[link to commit](https://github.com/JhomeWu/YouWoTestBlog/commit/f9d67cdbff0b9db2b4a16a0ceb42d78899f0d6c7)
+#### Feat: Create, Update, Delete
+[link to commit](https://github.com/JhomeWu/YouWoTestBlog/commit/1d2c63d32a12e1f7475ece31a964e27674cc88f0)
+#### Feat: Add user auth and search
+[link to commit](https://github.com/JhomeWu/YouWoTestBlog/commit/83b19299554e4e0990433c90425543b2a9d84812)
+#### Feat: implement Sort Search Ordering
+[link to commit](https://github.com/JhomeWu/YouWoTestBlog/commit/190fdfad5776de50d66426fde62fe23c0977214a)
+#### Feat: Create base api structure
+[link to commit](https://github.com/JhomeWu/YouWoTestBlog/commit/40c7380e71dfd508f30f3f886615693cea132269)
+#### Feat: Create base data structure
+[link to commit](https://github.com/JhomeWu/YouWoTestBlog/commit/875d35f3abd919ea01a0b21dbd13969264f9294f)
+#### Feat: Init laravel project
+[link to commit](https://github.com/JhomeWu/YouWoTestBlog/commit/641c2f5d48cfe3f131cbe2e90fe14650a6d92d77)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
