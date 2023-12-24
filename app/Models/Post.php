@@ -28,6 +28,13 @@ class Post extends Model
     ];
     public static $maxPerPage = 100;
 
+    protected $fillable = [
+        'title',
+        'image_url',
+        'content',
+        'is_active',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

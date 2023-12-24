@@ -98,4 +98,64 @@ class PostTest extends TestCase
         $response->assertJsonCount(6, 'data');
         $response->assertJsonPath('hasNext', false);
     }
+
+
+    public function test_store_api(): void
+    {
+        $user = User::factory()->create();
+        Sanctum::actingAs(
+            $user,
+            ['*']
+        );
+        $response = $this->post('/api/user/posts', [
+            'title' => 'test',
+            'content' => 'test',
+            'is_active' => true,
+        ]);
+        $response->assertStatus(200);
+        $response->assertJsonPath('title', 'test');
+        $response->assertJsonPath('content', 'test');
+        $response->assertJsonPath('is_active', true);
+        $response->assertJsonPath('user_id', $user->id);
+    }
+
+    public function test_update_api(): void
+    {
+        $user = User::factory()->create();
+        Sanctum::actingAs(
+            $user,
+            ['*']
+        );
+        $post = Post::factory()->create([
+            'user_id' => $user->id,
+        ]);
+        $response = $this->put("/api/user/posts/{$post->id}", [
+            'title' => 'test',
+            'content' => 'test',
+            'is_active' => true,
+        ]);
+        $response->assertStatus(200);
+        $response->assertJsonPath('title', 'test');
+        $response->assertJsonPath('content', 'test');
+        $response->assertJsonPath('is_active', true);
+        $response->assertJsonPath('user_id', $user->id);
+    }
+
+    public function test_destroy_api(): void
+    {
+        $user = User::factory()->create();
+        Sanctum::actingAs(
+            $user,
+            ['*']
+        );
+        $post = Post::factory()->create([
+            'user_id' => $user->id,
+        ]);
+        $response = $this->delete("/api/user/posts/{$post->id}");
+        $response->assertStatus(200);
+        $response->assertJsonPath('title', $post->title);
+        $response->assertJsonPath('content', $post->content);
+        $response->assertJsonPath('is_active', (int) $post->is_active);
+        $response->assertJsonPath('user_id', $post->user_id);
+    }
 }

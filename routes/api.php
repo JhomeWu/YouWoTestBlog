@@ -22,6 +22,9 @@ Route::prefix('user')->group(function () {
         ->middleware('auth:sanctum')
         ->group(function () {
             Route::post('/search', PostController::class . '@userSearch');
+            Route::post('/', PostController::class . '@store');
+            Route::put('/{post}', PostController::class . '@update');
+            Route::delete('/{post}', PostController::class . '@destroy');
         });
 });
 
