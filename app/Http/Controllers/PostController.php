@@ -19,6 +19,15 @@ class PostController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function userSearch(PostSearchRequest $request)
+    {
+        $searchData = new SearchData($request->validated());
+        return Post::search(Post::where('user_id', $request->user()->id), $searchData);
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)

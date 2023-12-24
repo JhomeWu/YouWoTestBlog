@@ -16,6 +16,15 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::prefix('user')->group(function () {
+    Route::post('/login', UserController::class . '@login');
+    Route::prefix('posts')
+        ->middleware('auth:sanctum')
+        ->group(function () {
+            Route::post('/search', PostController::class . '@userSearch');
+        });
+});
+
 Route::prefix('posts')->group(function () {
     Route::post('/search', PostController::class . '@search');
 });
